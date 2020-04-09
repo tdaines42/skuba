@@ -1,0 +1,11 @@
+apiVersion: policy/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: suse.caasp.psp.kubeflow
+spec:
+  privileged: false  # Don't allow privileged pods!
+  allowPrivilegeEscalation: false
+  allowedCapabilities:
+    - SYS_PTRACE # needed for pns
+    - NET_RAW # needed for notebook creation
+    - NET_ADMIN # needed for notebook creation
